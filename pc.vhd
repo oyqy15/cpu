@@ -31,13 +31,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity pc is
     Port ( rst : in  STD_LOGIC;
-           clk : in  STD_LOGIC);
+           clk : in  STD_LOGIC;
+			  pc : out STD_LOGIC_VECTOR(15 downto 0);
+		     ce : out STD_LOGIC
+		   );
 end pc;
 
 architecture Behavioral of pc is
 
 begin
-
+	
+	
 
 end Behavioral;
 
