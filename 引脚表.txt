@@ -1,0 +1,186 @@
+[entity] Pc：
+
+	in：
+		rst, clk, next_pc,
+	out：
+		this_pc
+
+
+
+[entity] If：
+	in：
+		rst, clk, this_pc
+	out：
+		if_pc
+		if_inst
+		ram1addr
+		ram1we
+		ram1oe
+		ram1en
+		rdn
+		wrn
+	inout:
+		ram1data
+	
+[entity] If_to_id:
+	in:
+		rst,clk
+		if_pc
+		if_init
+	out:
+		id_pc
+		id_inst
+
+
+
+[entity] Id:
+	in:
+		clk
+		id_pc
+		id_inst
+		reg_rx_data
+		reg_ry_data
+	out:
+		rxaddr
+		rxdata
+		ryaddr
+		rydata
+		reg_rx_addr
+		reg_ry_addr
+		imm
+		
+		is_x_imm
+		is_y_imm
+
+		need_wb
+		wbaddr
+		wbdata
+		need_mem
+		memaddr		
+		memdata
+
+[entity] Id_to_Exe:
+	in:
+		rst,clk
+		id_rxaddr
+		id_rxdata
+		id_ryaddr
+		id_rydata
+		id_imm
+		
+		id_is_x_imm
+		id_is_y_imm
+
+		id_need_wb
+		id_wbaddr
+		id_wbdata
+		id_need_mem
+		id_memaddr		
+		id_memdata
+	out:
+		exe_rxaddr
+		exe_rxdata
+		exe_ryaddr
+		exe_rydata
+		exe_imm
+		
+		exe_is_x_imm
+		exe_is_y_imm
+
+		exe_need_wb
+		exe_wbaddr
+		exe_wbdata
+		exe_need_mem
+		exe_memaddr		
+		exe_memdata
+
+[entity] exe:
+	in:
+		rst,clk
+		rxaddr
+		rxdata
+		ryaddr
+		rydata
+		imm
+		
+		is_x_imm
+		is_y_imm
+
+		need_wb
+		wbaddr
+		wbdata
+		need_mem
+		memaddr		
+		memdata
+
+		last_wb_need_wb//上两条指令
+		last_wb_wbaddr
+		last_wb_wbdata
+
+		last_mem_need_wb//上一条指令
+		last_mem_wbaddr
+		last_mem_wbdata
+		last_mem_need_mem
+		last_mem_memaddr		
+		last_mem_memdata
+
+	out:
+		out_need_wb
+		out_wbaddr
+		out_wbdata
+		out_need_mem
+		out_memaddr		
+		out_memdata
+
+[entity] exe_to_mem:
+	in:
+		rst,clk
+		exe_need_wb
+		exe_wbaddr
+		exe_wbdata
+		exe_need_mem
+		exe_memaddr		
+		exe_memdata
+	out:
+		mem_need_wb
+		mem_wbaddr
+		mem_wbdata
+		mem_need_mem
+		mem_memaddr		
+		mem_memdata
+
+[entity] mem:
+	in:
+		rst,clk
+		need_wb
+		wbaddr
+		wbdata
+		need_mem
+		memaddr		
+		memdata
+	out:
+		out_need_wb
+		out_wbaddr
+		out_wbdata
+
+[entity] mem_to_wb:
+	in:
+		rst,clk
+		mem_need_wb
+		mem_wbaddr
+		mem_wbdata
+	
+	out:
+		wb_need_wb
+		wb_wbaddr
+		wb_wbdata
+
+[entity] reg:
+	in:
+		rst,clk
+		r1addr,r2addr
+		wbaddr,wbdata
+		need_wb
+	out:
+		r1data
+		r2data
