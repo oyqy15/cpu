@@ -9,26 +9,8 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
-package cpu_constant is
 
-constant ALU_ADD : std_logic_vector(2 downto 0):= "000";
-constant ALU_AND : std_logic_vector(2 downto 0):= "001";
-constant ALU_SUB : std_logic_vector(2 downto 0):= "010";
-constant ALU_SLL : std_logic_vector(2 downto 0):= "011";
-constant ALU_SRA : std_logic_vector(2 downto 0):= "100";
-constant ALU_SRL : std_logic_vector(2 downto 0):= "101";
-constant ALU_OR : std_logic_vector(2 downto 0):= "110";
-constant ALU_NOP : std_logic_vector(2 downto 0):= "111";
-
-constant MEM_NOP: std_logic_vector(1 downto 0):= "00";
-constant MEM_READ: std_logic_vector(1 downto 0):= "01";
-constant MEM_WRITE: std_logic_vector(1 downto 0):= "10";
-
-
-constant PREDICT_NOP: std_logic_vector(1 downto 0):= "00";
-constant PREDICT_EZ: std_logic_vector(1 downto 0):= "01";
-constant PREDICT_NZ: std_logic_vector(1 downto 0):= "10";
-
+package dsd is
 
 -- type <new_type> is
 --  record
@@ -47,9 +29,9 @@ constant PREDICT_NZ: std_logic_vector(1 downto 0):= "10";
 -- procedure <procedure_name> (<type_declaration> <constant_name>	: in <type_declaration>);
 --
 
-end cpu_constant;
+end dsd;
 
-package body cpu_constant is
+package body dsd is
 
 ---- Example 1
 --  function <function_name>  (signal <signal_name> : in <type_declaration>  ) return <type_declaration> is
@@ -77,4 +59,4 @@ package body cpu_constant is
 --    
 --  end <procedure_name>;
  
-end cpu_constant;
+end dsd;
