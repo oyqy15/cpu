@@ -1,0 +1,5 @@
+set -tmpdir "E:/ShuDianShiYan/cpu/xst/projnav.tmp"
+set -xsthdpdir "E:/ShuDianShiYan/cpu/xst"
+elaborate
+-ifn extomem.prj
+-ifmt mixed

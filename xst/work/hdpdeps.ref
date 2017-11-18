@@ -1,0 +1,10 @@
+V3 6
+FL E:/ShuDianShiYan/cpu/extomem.vhd 2017/11/18.16:07:47 P.20131013
+EN work/extomem 1510993596 FL E:/ShuDianShiYan/cpu/extomem.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/extomem/Behavioral 1510993597 \
+      FL E:/ShuDianShiYan/cpu/extomem.vhd EN work/extomem 1510993596
+FL E:/ShuDianShiYan/cpu/pc.vhd 2017/11/18.15:13:00 P.20131013
+EN work/pc 1510993638 FL E:/ShuDianShiYan/cpu/pc.vhd PB ieee/std_logic_1164 1381692176
+AR work/pc/Behavioral 1510993639 \
+      FL E:/ShuDianShiYan/cpu/pc.vhd EN work/pc 1510993638
