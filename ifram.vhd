@@ -30,12 +30,34 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity ifram is
+	Port ( rst : in STD_LOGIC;
+			 clk : in STD_LOGIC;
+			 pause : in STD_LOGIC;
+			 pc_pc: in STD_LOGIC_VECTOR(15 downto 0);
+			 b_need_id: in STD_LOGIC;
+		 	 b_pc_id: in STD_LOGIC_VECTOR(15 downto 0);
+		    b_need_ex: in STD_LOGIC;
+			 b_pc_ex: in STD_LOGIC_VECTOR(15 downto 0);
+					
+			 nextpc: out STD_LOGIC_VECTOR(15 downto 0);
+			 inst: out STD_LOGIC_VECTOR(15 downto 0);
+					
+			 ram2addr : out  STD_LOGIC_VECTOR (17 downto 0);
+			 ram2data : inout  STD_LOGIC_VECTOR (15 downto 0);
+			 ram2oe : out  STD_LOGIC;
+			 ram2we : out  STD_LOGIC;
+			 ram2en : out  STD_LOGIC
+		   );
 end ifram;
 
 architecture Behavioral of ifram is
 
 begin
 
+process(rst,clk)
+begin
+	
+end process;
 
 end Behavioral;
 

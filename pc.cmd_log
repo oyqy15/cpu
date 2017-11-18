@@ -1,1 +1,6 @@
 xst -intstyle ise -ifn "E:/ShuDianShiYan/cpu/pc.xst" -ofn "E:/ShuDianShiYan/cpu/pc.syr" 
+xst -intstyle ise -ifn "F:/isep/cpu/pc.xst" -ofn "F:/isep/cpu/pc.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s1200e-fg320-4 pc.ngc pc.ngd  
+map -intstyle ise -p xc3s1200e-fg320-4 -cm area -ir off -pr off -c 100 -o pc_map.ncd pc.ngd pc.pcf 
+par -w -intstyle ise -ol high -t 1 pc_map.ncd pc.ncd pc.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml pc.twx pc.ncd -o pc.twr pc.pcf 

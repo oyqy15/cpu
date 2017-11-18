@@ -1,4 +1,4 @@
-EN pc NULL E:/ShuDianShiYan/cpu/pc.vhd sub00/vhpl02 1510993638
+EN pc NULL F:/isep/cpu/pc.vhd sub00/vhpl02 1510994894
 EN extomem NULL E:/ShuDianShiYan/cpu/extomem.vhd sub00/vhpl00 1510993596
 AR extomem behavioral E:/ShuDianShiYan/cpu/extomem.vhd sub00/vhpl01 1510993597
-AR pc behavioral E:/ShuDianShiYan/cpu/pc.vhd sub00/vhpl03 1510993639
+AR pc behavioral F:/isep/cpu/pc.vhd sub00/vhpl03 1510994895

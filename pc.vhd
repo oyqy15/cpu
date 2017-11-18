@@ -48,9 +48,7 @@ begin
 	process(rst,clk)
 	begin
 		if (rst='0') then
-			pc<="0000000000000000";
-			pause<='0';
-			state<=1;
+			state<=5;
 		elsif (clk'event and clk = '1') then
 			case state is 
 				when 1=>
@@ -60,12 +58,16 @@ begin
 				when 3=>
 					state<=0;
 				when 0=>
-					if (stall(0)='1') then
-						pause<='1';
-					else
+					if (stall(0)='0') then
 						pc<=pre_pc;
 						pause<='0';
+					else
+						pause<='1';
 					end if;
+					state<=1;
+				when 5=>
+					pc<="0000000000000000";
+					pause<='0';
 					state<=1;
 				when others=>
 					state<=1;

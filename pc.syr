@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.33 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.10 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.33 secs
  
 --> Reading design: pc.prj
 
@@ -104,20 +104,22 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "E:/ShuDianShiYan/cpu/pc.vhd" in Library work.
+WARNING:HDLParsers:3607 - Unit work/pc is now defined in a different file.  It was defined in "E:/ShuDianShiYan/cpu/pc.vhd", and is now defined in "F:/isep/cpu/pc.vhd".
+WARNING:HDLParsers:3607 - Unit work/pc/Behavioral is now defined in a different file.  It was defined in "E:/ShuDianShiYan/cpu/pc.vhd", and is now defined in "F:/isep/cpu/pc.vhd".
+Compiling vhdl file "F:/isep/cpu/pc.vhd" in Library work.
 Entity <pc> compiled.
-Entity <pc> (Architecture <Behavioral>) compiled.
+Entity <pc> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
-Analyzing hierarchy for entity <pc> in library <work> (architecture <Behavioral>).
+Analyzing hierarchy for entity <pc> in library <work> (architecture <behavioral>).
 
 
 =========================================================================
 *                            HDL Analysis                               *
 =========================================================================
-Analyzing Entity <pc> in library <work> (Architecture <Behavioral>).
+Analyzing Entity <pc> in library <work> (Architecture <behavioral>).
 Entity <pc> analyzed. Unit <pc> generated.
 
 
@@ -128,18 +130,18 @@ Entity <pc> analyzed. Unit <pc> generated.
 Performing bidirectional port resolution...
 
 Synthesizing Unit <pc>.
-    Related source file is "E:/ShuDianShiYan/cpu/pc.vhd".
+    Related source file is "F:/isep/cpu/pc.vhd".
 WARNING:Xst:647 - Input <stall<4:1>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found finite state machine <FSM_0> for signal <state>.
     -----------------------------------------------------------------------
-    | States             | 4                                              |
-    | Transitions        | 4                                              |
+    | States             | 5                                              |
+    | Transitions        | 5                                              |
     | Inputs             | 0                                              |
     | Outputs            | 2                                              |
     | Clock              | clk                       (rising_edge)        |
     | Reset              | rst                       (negative)           |
     | Reset type         | asynchronous                                   |
-    | Reset State        | 00000000000000000000000000000001               |
+    | Reset State        | 00000000000000000000000000000101               |
     | Power Up State     | 00000000000000000000000000000000               |
     | Encoding           | automatic                                      |
     | Implementation     | LUT                                            |
@@ -167,14 +169,15 @@ Macro Statistics
 =========================================================================
 
 Analyzing FSM <FSM_0> for best encoding.
-Optimizing FSM <state/FSM> on signal <state[1:4]> with one-hot encoding.
+Optimizing FSM <state/FSM> on signal <state[1:5]> with one-hot encoding.
 ----------------------------------------------
  State                            | Encoding
 ----------------------------------------------
- 00000000000000000000000000000000 | 0001
- 00000000000000000000000000000001 | 0010
- 00000000000000000000000000000010 | 0100
- 00000000000000000000000000000011 | 1000
+ 00000000000000000000000000000000 | 00001
+ 00000000000000000000000000000001 | 01000
+ 00000000000000000000000000000010 | 00100
+ 00000000000000000000000000000011 | 10000
+ 00000000000000000000000000000101 | 00010
 ----------------------------------------------
 
 =========================================================================
@@ -203,8 +206,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 21
- Flip-Flops                                            : 21
+# Registers                                            : 22
+ Flip-Flops                                            : 22
 
 =========================================================================
 
@@ -233,12 +236,15 @@ Design Statistics
 # IOs                              : 40
 
 Cell Usage :
-# BELS                             : 2
+# BELS                             : 36
+#      GND                         : 1
 #      INV                         : 1
 #      LUT2                        : 1
-# FlipFlops/Latches                : 21
-#      FDC                         : 3
-#      FDCE                        : 17
+#      LUT3_L                      : 16
+#      LUT4                        : 17
+# FlipFlops/Latches                : 22
+#      FDC                         : 4
+#      FDE                         : 17
 #      FDP                         : 1
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
@@ -252,9 +258,9 @@ Device utilization summary:
 
 Selected Device : 3s1200efg320-4 
 
- Number of Slices:                       12  out of   8672     0%  
- Number of Slice Flip Flops:             21  out of  17344     0%  
- Number of 4 input LUTs:                  2  out of  17344     0%  
+ Number of Slices:                       19  out of   8672     0%  
+ Number of Slice Flip Flops:             22  out of  17344     0%  
+ Number of 4 input LUTs:                 35  out of  17344     0%  
  Number of IOs:                          40
  Number of bonded IOBs:                  36  out of    250    14%  
  Number of GCLKs:                         1  out of     24     4%  
@@ -280,24 +286,24 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 21    |
+clk                                | BUFGP                  | 22    |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
 ----------------------------------------
------------------------------------+------------------------+-------+
-Control Signal                     | Buffer(FF name)        | Load  |
------------------------------------+------------------------+-------+
-rst_inv(rst_inv1_INV_0:O)          | NONE(pause)            | 21    |
------------------------------------+------------------------+-------+
+-------------------------------------------------------+------------------------+-------+
+Control Signal                                         | Buffer(FF name)        | Load  |
+-------------------------------------------------------+------------------------+-------+
+state_FSM_Acst_FSM_inv(state_FSM_Acst_FSM_inv1_INV_0:O)| NONE(state_FSM_FFd1)   | 5     |
+-------------------------------------------------------+------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 3.494ns (Maximum Frequency: 286.205MHz)
-   Minimum input arrival time before clock: 4.133ns
-   Maximum output required time after clock: 4.283ns
+   Minimum period: 2.977ns (Maximum Frequency: 335.909MHz)
+   Minimum input arrival time before clock: 4.264ns
+   Maximum output required time after clock: 4.394ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -306,31 +312,32 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 3.494ns (frequency: 286.205MHz)
-  Total number of paths / destination ports: 21 / 21
+  Clock period: 2.977ns (frequency: 335.909MHz)
+  Total number of paths / destination ports: 72 / 21
 -------------------------------------------------------------------------
-Delay:               3.494ns (Levels of Logic = 1)
-  Source:            state_FSM_FFd4 (FF)
+Delay:               2.977ns (Levels of Logic = 2)
+  Source:            pc_0 (FF)
   Destination:       pc_0 (FF)
   Source Clock:      clk rising
   Destination Clock: clk rising
 
-  Data Path: state_FSM_FFd4 to pc_0
+  Data Path: pc_0 to pc_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q              3   0.591   0.610  state_FSM_FFd4 (state_FSM_FFd4)
-     LUT2:I1->O           16   0.704   1.034  pc_not00011 (pc_not0001)
-     FDCE:CE                   0.555          pc_0
+     FDE:C->Q              3   0.591   0.566  pc_0 (pc_0)
+     LUT3_L:I2->LO         1   0.704   0.104  pc_mux0000<0>1_SW0 (N32)
+     LUT4:I3->O            1   0.704   0.000  pc_mux0000<0>1 (pc_mux0000<0>)
+     FDE:D                     0.308          pc_0
     ----------------------------------------
-    Total                      3.494ns (1.850ns logic, 1.644ns route)
-                                       (52.9% logic, 47.1% route)
+    Total                      2.977ns (2.307ns logic, 0.670ns route)
+                                       (77.5% logic, 22.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 33 / 33
+  Total number of paths / destination ports: 50 / 34
 -------------------------------------------------------------------------
-Offset:              4.133ns (Levels of Logic = 2)
+Offset:              4.264ns (Levels of Logic = 3)
   Source:            stall<0> (PAD)
   Destination:       pc_0 (FF)
   Destination Clock: clk rising
@@ -339,43 +346,44 @@ Offset:              4.133ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             2   1.218   0.622  stall_0_IBUF (stall_0_IBUF)
-     LUT2:I0->O           16   0.704   1.034  pc_not00011 (pc_not0001)
-     FDCE:CE                   0.555          pc_0
+     IBUF:I->O            17   1.218   1.226  stall_0_IBUF (stall_0_IBUF)
+     LUT3_L:I0->LO         1   0.704   0.104  pc_mux0000<9>1_SW0 (N2)
+     LUT4:I3->O            1   0.704   0.000  pc_mux0000<9>1 (pc_mux0000<9>)
+     FDE:D                     0.308          pc_9
     ----------------------------------------
-    Total                      4.133ns (2.477ns logic, 1.656ns route)
-                                       (59.9% logic, 40.1% route)
+    Total                      4.264ns (2.934ns logic, 1.330ns route)
+                                       (68.8% logic, 31.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
   Total number of paths / destination ports: 17 / 17
 -------------------------------------------------------------------------
-Offset:              4.283ns (Levels of Logic = 1)
-  Source:            pause (FF)
-  Destination:       pause (PAD)
+Offset:              4.394ns (Levels of Logic = 1)
+  Source:            pc_15 (FF)
+  Destination:       pc<15> (PAD)
   Source Clock:      clk rising
 
-  Data Path: pause to pause
+  Data Path: pc_15 to pc<15>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q             1   0.591   0.420  pause (pause_OBUF)
-     OBUF:I->O                 3.272          pause_OBUF (pause)
+     FDE:C->Q              3   0.591   0.531  pc_15 (pc_15)
+     OBUF:I->O                 3.272          pc_15_OBUF (pc<15>)
     ----------------------------------------
-    Total                      4.283ns (3.863ns logic, 0.420ns route)
-                                       (90.2% logic, 9.8% route)
+    Total                      4.394ns (3.863ns logic, 0.531ns route)
+                                       (87.9% logic, 12.1% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 10.00 secs
-Total CPU time to Xst completion: 9.52 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 7.36 secs
  
 --> 
 
-Total memory usage is 287608 kilobytes
+Total memory usage is 308996 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    1 (   0 filtered)
+Number of warnings :    3 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 
