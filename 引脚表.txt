@@ -47,6 +47,8 @@
 		rydata
 		reg_rx_addr
 		reg_ry_addr
+		reg_needrx
+		reg_needry
 		imm
 		
 		is_x_imm
@@ -58,10 +60,13 @@
 		need_mem
 		memaddr		
 		memdata
+		
+		op (and or << >>a >>l + -)
 
 [entity] Id_to_Exe:
 	in:
 		rst,clk
+		id_op
 		id_rxaddr
 		id_rxdata
 		id_ryaddr
@@ -78,6 +83,7 @@
 		id_memaddr		
 		id_memdata
 	out:
+		exe_op
 		exe_rxaddr
 		exe_rxdata
 		exe_ryaddr
@@ -178,6 +184,7 @@
 [entity] reg:
 	in:
 		rst,clk
+		needr1,needr2
 		r1addr,r2addr
 		wbaddr,wbdata
 		need_wb
