@@ -19,6 +19,7 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use CPU_CONSTANT.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -121,7 +122,7 @@ component id
 					predict: in STD_LOGIC;
 					b_need : out STD_LOGIC;
 					b_pc: out STD_LOGIC_VECTOR(15 downto 0);
-					need_predict: out STD_LOGIC; --todo: definition
+					need_predict: out std_logic_vector(1 downto 0);
 					
 					a: out STD_LOGIC_VECTOR(15 downto 0);
 					a_addr: out STD_LOGIC_VECTOR(15 downto 0);
@@ -131,13 +132,13 @@ component id
 					a_imm: out STD_LOGIC;
 					b_imm: out STD_LOGIC;
 					
-					op_alu: out STD_LOGIC; --todo: definition
-					op_mem: out STD_LOGIC; --todo: definition
+					op_alu: out std_logic_vector(2 downto 0); 
+					op_mem: out std_logic_vector(1 downto 0);
 					need_wb: out STD_LOGIC;
 					wb_addr: out STD_LOGIC;
 					
 					wb_addr_ex: in STD_LOGIC_VECTOR(15 downto 0);
-					op_mem_ex: in STD_LOGIC; --todo: definition
+					op_mem_ex: in std_logic_vector(1 downto 0);
 					
 					r1_addr: out STD_LOGIC_VECTOR(15 downto 0);
 					r2_addr: out STD_LOGIC_VECTOR(15 downto 0);
@@ -157,8 +158,8 @@ component idtoex
 					clk : in STD_LOGIC;
 					stall : in STD_LOGIC_VECTOR(4 downto 0);
 					
-					op_alu_id: in STD_LOGIC; --todo: definition
-					op_alu_ex: out STD_LOGIC;
+					op_alu_id: in std_logic_vector(2 downto 0);
+					op_alu_ex: out std_logic_vector(2 downto 0);
 					a_id: in STD_LOGIC_VECTOR(15 downto 0);
 					a_ex: out STD_LOGIC_VECTOR(15 downto 0);
 					a_addr_id: in STD_LOGIC_VECTOR(15 downto 0);
@@ -174,8 +175,8 @@ component idtoex
 					b_imm_id: in STD_LOGIC;
 					b_imm_ex: out STD_LOGIC;
 					
-					op_mem_id: in STD_LOGIC; --todo: definition
-					op_mem_ex: out STD_LOGIC;
+					op_mem_id: in std_logic_vector(1 downto 0);
+					op_mem_ex: out std_logic_vector(1 downto 0);
 					need_wb_id: in STD_LOGIC;
 					need_wb_ex: out STD_LOGIC;
 					wb_addr_id: in STD_LOGIC;
@@ -183,7 +184,7 @@ component idtoex
 					
 					correctpc_id: in STD_LOGIC_VECTOR(15 downto 0);
 					correctpc_ex: out STD_LOGIC_VECTOR(15 downto 0);
-					need_predict_id: in STD_LOGIC; --todo: definition
+					need_predict_id: in std_logic_vector(1 downto 0);
 					need_predict_ex: out STD_LOGIC;
 					
 					nop_last_ex: in STD_LOGIC
@@ -204,8 +205,9 @@ component ex
 					a_imm: in STD_LOGIC;
 					b_imm: in STD_LOGIC;
 					
-					op_alu: in STD_LOGIC; --todo: definition
-					op_mem: in STD_LOGIC; --todo: definition
+					op_alu: in  std_logic_vector(2 downto 0);
+					op_mem: in std_logic_vector(1 downto 0);
+					
 					need_wb: in STD_LOGIC;
 					wb_addr: in STD_LOGIC;
 					
@@ -220,7 +222,7 @@ component ex
 					r_addr_wb: in STD_LOGIC_VECTOR(15 downto 0);
 					r_need_wb: in STD_LOGIC;
 					
-					need_predict: in STD_LOGIC; --todo: definition
+					need_predict:  in std_logic_vector(1 downto 0);
 					b_need: out STD_LOGIC;
 					b_pc: out STD_LOGIC_VECTOR(15 downto 0);
 					
@@ -240,8 +242,8 @@ component extomem
 					addr_ex: in STD_LOGIC_VECTOR(15 downto 0);
 					addr_mem: out STD_LOGIC_VECTOR(15 downto 0);
 					
-					op_mem_ex: in STD_LOGIC; --todo : definition
-					op_mem_mem: out STD_LOGIC;
+					op_mem_ex: in std_logic_vector(1 downto 0);
+					op_mem_mem: out std_logic_vector(1 downto 0);
 					
 					need_wb_ex: in STD_LOGIC; 
 					need_wb_mem:  out STD_LOGIC;
@@ -262,7 +264,7 @@ component mem
 					
 					answer: in STD_LOGIC_VECTOR(15 downto 0);
 					addr: in STD_LOGIC_VECTOR(15 downto 0);
-					op_mem: in STD_LOGIC; --todo:definition
+					op_mem: in std_logic_vector(1 downto 0):= "00";
 					
 					ram1addr : out  STD_LOGIC_VECTOR (17 downto 0);
 					ram1data : inout  STD_LOGIC_VECTOR (15 downto 0);
